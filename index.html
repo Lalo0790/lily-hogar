@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lily · Hogar y Navidad</title>
+  <meta name="description" content="Cosas bonitas para tu casa y para regalar esta&nbsp;Navidad.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Figtree:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f3eee4;
+      --paper: #faf7f1;
+      --ink: #2b241f;
+      --muted: #6d6158;
+      --line: #d9d0c4;
+      --wine: #7a3434;
+      --wine-dark: #5e2828;
+      --wa: #1f6a3d;
+      --wa-bg: #216c3f;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Figtree, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.5;
+      font-size: 16px;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+
+    a { color: var(--wine); }
+
+    .wrap {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header.site {
+      padding: 22px 0 14px;
+      text-align: center;
+    }
+
+    .brand {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: 1.55rem;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .brand span {
+      font-weight: 500;
+      font-style: italic;
+      color: var(--wine);
+    }
+
+    .hero {
+      margin: 6px auto 28px;
+    }
+
+    .hero figure {
+      background: #e8e0d4;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: min(42vh, 380px);
+      object-fit: cover;
+      object-position: 70% 50%;
+    }
+
+    .hero p {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.35rem, 4vw, 1.85rem);
+      font-weight: 500;
+      line-height: 1.3;
+      text-align: center;
+      margin: 18px auto 0;
+      max-width: 18em;
+    }
+
+    .intro {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 10px auto 0;
+      max-width: 28em;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 8px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 6px 0 18px;
+      margin: 8px 0 4px;
+      scrollbar-width: none;
+    }
+
+    .filters::-webkit-scrollbar { display: none; }
+
+    .filters button {
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 0.88rem;
+      padding: 7px 13px;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .filters button[aria-pressed="true"] {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--paper);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px 12px;
+    }
+
+    @media (min-width: 800px) {
+      .grid { grid-template-columns: 1fr 1fr 1fr; gap: 28px 18px; }
+    }
+
+    .card { min-width: 0; }
+
+    .card .photo {
+      background: #eae3d8;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+    }
+
+    .card.wide { grid-column: span 2; }
+    .card.wide .photo { aspect-ratio: 5 / 3; }
+
+    .card.contain .photo {
+      aspect-ratio: 1 / 1;
+      background: #ececec;
+    }
+    .card.contain img { object-fit: contain; }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: 1.08rem;
+      line-height: 1.25;
+      margin: 10px 0 6px;
+    }
+
+    .price {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .ask {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--wine);
+      background: transparent;
+      border: 1px solid var(--wine);
+      padding: 6px 10px;
+      text-decoration: none;
+      border-radius: 2px;
+    }
+
+    .ask:hover { background: var(--wine); color: #fff; }
+
+    .pedir {
+      margin: 56px auto 0;
+      padding: 28px 0 8px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .pedir h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    .steps {
+      list-style: none;
+      display: grid;
+      gap: 16px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 700px) {
+      .steps { grid-template-columns: 1fr 1fr 1fr; gap: 24px; max-width: 800px; }
+    }
+
+    .steps li {
+      color: var(--ink);
+    }
+
+    .steps strong {
+      display: block;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--wine);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    footer.site {
+      margin: 48px 0 88px;
+      text-align: center;
+      color: #9a8f85;
+      font-size: 0.72rem;
+    }
+
+    .wa-float {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--wa-bg);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+      z-index: 10;
+      text-decoration: none;
+    }
+
+    .wa-float svg { width: 28px; height: 28px; fill: currentColor; }
+
+    .wa-float:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+    .hidden { display: none; }
+
+    @media (min-width: 800px) {
+      .wrap { width: min(1080px, calc(100% - 48px)); }
+      header.site { padding: 28px 0 18px; }
+      .brand { font-size: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="#">Lily · <span>Hogar y Navidad</span></a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <figure>
+        <img src="images/hero-toallas.webp" alt="Toallas de mano Winter Wonderland, beige con arbolitos blancos">
+      </figure>
+      <p>Cosas bonitas para tu casa y para regalar esta&nbsp;Navidad</p>
+      <p class="intro">Si te gusta algo, escríbeme por WhatsApp y te&nbsp;digo el&nbsp;precio.</p>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <nav class="filters" aria-label="Categorías">
+      <button type="button" data-filter="all" aria-pressed="true">Todas</button>
+      <button type="button" data-filter="calentadores" aria-pressed="false">Calentadores de velas</button>
+      <button type="button" data-filter="navidad" aria-pressed="false">Navidad</button>
+      <button type="button" data-filter="cocina" aria-pressed="false">Cocina y mesa</button>
+      <button type="button" data-filter="blancos" aria-pressed="false">Blancos</button>
+      <button type="button" data-filter="pantuflas" aria-pressed="false">Pantuflas</button>
+    </nav>
+
+    <div class="grid" id="catalogo"></div>
+
+    <section class="pedir" id="como-pedir">
+      <h2>Cómo pedir</h2>
+      <ol class="steps">
+        <li><strong>1</strong>Eliges lo que te gusta</li>
+        <li><strong>2</strong>Me mandas WhatsApp</li>
+        <li><strong>3</strong>Lo apartamos</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="site">
+    Página de muestra hecha por Eduardo García Soluciones
+  </footer>
+
+  <a class="wa-float" id="wa-float" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.67c2.2 0 4.26.86 5.82 2.42a8.22 8.22 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.42 0-2.8-.36-4.03-1.05l-.29-.17-3.12.82.83-3.04-.18-.3a8.2 8.2 0 0 1-1.26-4.5c0-4.54 3.7-8.25 8.24-8.25zM8.53 7.53c-.16 0-.43.06-.66.31-.22.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.3 3.64 2.11.81 2.54.65 3 .61.46-.05 1.49-.61 1.7-1.2.21-.59.21-1.09.15-1.2-.06-.11-.22-.17-.46-.3-.24-.12-1.49-.73-1.72-.82-.23-.08-.4-.12-.57.12-.17.25-.66.82-.81.99-.15.17-.3.19-.54.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.02-.37.11-.49.11-.11.24-.3.37-.44.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.57-1.37-.78-1.88-.2-.48-.41-.42-.57-.42z"/>
+    </svg>
+  </a>
+
+  <script>
+    const PHONE = '';
+
+    const productos = [
+      { id: 'calentador-blanco', cat: 'calentadores', img: 'images/calentador-blanco.webp', alt: 'Calentador de velas con cúpula blanca esmerilada, poste dorado y base de mármol', name: 'Calentador blanco, base de mármol', price: 1800, contain: true, pos: 'center' },
+      { id: 'calentador-ambar', cat: 'calentadores', img: 'images/calentador-ambar.webp', alt: 'Calentador de velas con pantalla de vidrio ámbar acanalada y base de mármol', name: 'Calentador ámbar, base de mármol', price: 1800, contain: true, pos: 'center' },
+      { id: 'calentador-ahumado', cat: 'calentadores', img: 'images/calentador-ahumado.webp', alt: 'Calentador de velas con cúpula ahumada y base negra con detalles dorados', name: 'Calentador ahumado, base negra y dorada', price: 1800, contain: true, pos: 'center' },
+      { id: 'arbolitos-maceta', cat: 'navidad', img: 'images/arbolitos-maceta.webp', alt: 'Arbolitos de pino en maceta y pinos de ratán', name: 'Arbolitos en maceta y pinos de ratán', pos: 'center 60%' },
+      { id: 'pueblito-gnomo', cat: 'navidad', img: 'images/pueblito-gnomo.webp', alt: 'Pueblito de madera con luz, pinitos y un gnomo', name: 'Pueblito de madera con luz y gnomo', pos: 'center 65%' },
+      { id: 'angelitos-nacimiento', cat: 'navidad', img: 'images/angelitos-nacimiento.webp', alt: 'Estante con angelitos, nacimientos, esferas de nieve y adornos navideños', name: 'Angelitos, nacimientos y esferas de nieve', pos: 'center 40%' },
+      { id: 'esferas-venados', cat: 'navidad', img: 'images/esferas-venados.webp', alt: 'Cajas de esferas, arbolitos decorativos y venados', name: 'Cajas de esferas, arbolitos y venados', pos: 'center 70%' },
+      { id: 'monos-perla', cat: 'navidad', img: 'images/monos-perla.webp', alt: 'Caja rosa con cuatro moños de perla', name: 'Moños de perla Rachel Zoe, set de 4', pos: 'center 40%' },
+      { id: 'monos-brillos', cat: 'navidad', img: 'images/monos-brillos.webp', alt: 'Caja con cuatro moños de brillantes Rachel Zoe', name: 'Moños con brillos Rachel Zoe, set de 4', pos: 'center 40%' },
+      { id: 'liston-beige', cat: 'navidad', img: 'images/liston-beige.webp', alt: 'Caja de listón y moños beige para el árbol', name: 'Listón y moños beige para el árbol', pos: 'center 45%' },
+      { id: 'portavelas-casitas', cat: 'navidad', img: 'images/portavelas-casitas.webp', alt: 'Portavelas dorado en forma de casitas', name: 'Portavelas de casitas doradas', pos: 'center 45%' },
+      { id: 'tablas-acacia', cat: 'cocina', img: 'images/tablas-acacia.webp', alt: 'Tablas de acacia y un organizador de mármol', name: 'Tablas de acacia y organizador de mármol', pos: 'center 40%' },
+      { id: 'platon-acebo', cat: 'cocina', img: 'images/platon-acebo.webp', alt: 'Platón de cerámica crema con tapa y un cuchillo decorado con acebo', name: 'Platón con tapa y cuchillo de acebo', pos: 'center 40%' },
+      { id: 'horneadores-brie', cat: 'cocina', img: 'images/horneadores-brie.webp', alt: 'Dos horneadores de brie, uno rojo y uno de jengibre', name: 'Horneadores de brie, rojo y jengibre', wide: true, pos: 'center' },
+      { id: 'cacerolas-jengibre', cat: 'cocina', img: 'images/cacerolas-jengibre.webp', alt: 'Cacerolas de cerámica con motivos de jengibre', name: 'Cacerolas de jengibre', wide: true, pos: 'center 40%' },
+      { id: 'cacerola-arbolito', cat: 'cocina', img: 'images/cacerola-arbolito.webp', alt: 'Cacerola blanca con tapa en forma de arbolito y estrella dorada', name: 'Cacerola blanca con tapa de arbolito', pos: 'center 40%' },
+      { id: 'cacerolas-copo', cat: 'cocina', img: 'images/cacerolas-copo.webp', alt: 'Cacerola blanca con tapa de copo de nieve, junto a otras en crema y azul', name: 'Cacerolas con tapa de copo, crema y azul', pos: 'center 40%' },
+      { id: 'frascos-santa', cat: 'cocina', img: 'images/frascos-santa.webp', alt: 'Frascos de cerámica con hojitas rojas y un galletero de Santa', name: 'Frascos de hojitas rojas y galletero de Santa', pos: 'center 45%' },
+      { id: 'toallas-verdes', cat: 'blancos', img: 'images/toallas-verdes.webp', alt: 'Toallas verdes con relieve de hojitas, hechas en Portugal', name: 'Toallas verdes de hojitas, hechas en Portugal', pos: 'center 40%' },
+      { id: 'toallas-winter', cat: 'blancos', img: 'images/toallas-winter.webp', alt: 'Toallas de mano beige con arbolitos, Winter Wonderland', name: 'Toallas de mano Winter Wonderland', wide: true, pos: '70% 50%' },
+      { id: 'pantuflas-1', cat: 'pantuflas', img: 'images/pantuflas-1.webp', alt: 'Pared de pantuflas Dearfoams y Lee', name: 'Pantuflas Dearfoams y Lee', pos: 'center 40%' },
+      { id: 'pantuflas-2', cat: 'pantuflas', img: 'images/pantuflas-2.webp', alt: 'Pared de pantuflas Lucky Brand, Dearfoams y Lee', name: 'Pantuflas Lucky Brand, Dearfoams y Lee', pos: 'center 40%' }
+    ];
+
+    function waUrl(text) {
+      const q = 'text=' + encodeURIComponent(text);
+      return PHONE ? ('https://wa.me/' + PHONE + '?' + q) : ('https://wa.me/?' + q);
+    }
+
+    function mensaje(p) {
+      if (p.price) {
+        return 'Hola Lily, me interesa el ' + p.name.toLowerCase() + ' de $' + p.price.toLocaleString('es-MX') + '. ¿Sigue disponible?';
+      }
+      return 'Hola Lily, me interesa esto: ' + p.name + '. ¿Me das el precio?';
+    }
+
+    function render(filter) {
+      const root = document.getElementById('catalogo');
+      root.innerHTML = '';
+      productos.filter(function (p) {
+        return filter === 'all' || p.cat === filter;
+      }).forEach(function (p) {
+        const art = document.createElement('article');
+        art.className = 'card' + (p.wide ? ' wide' : '') + (p.contain ? ' contain' : '');
+        art.dataset.cat = p.cat;
+
+        const photo = document.createElement('div');
+        photo.className = 'photo';
+        const img = document.createElement('img');
+        img.src = p.img;
+        img.alt = p.alt;
+        if (p.pos) img.style.objectPosition = p.pos;
+        photo.appendChild(img);
+
+        const h3 = document.createElement('h3');
+        h3.textContent = p.name;
+
+        art.appendChild(photo);
+        art.appendChild(h3);
+
+        if (p.price) {
+          const pr = document.createElement('p');
+          pr.className = 'price';
+          pr.textContent = '$' + p.price.toLocaleString('es-MX');
+          art.appendChild(pr);
+        }
+
+        const a = document.createElement('a');
+        a.className = 'ask';
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.href = waUrl(mensaje(p));
+        a.textContent = p.price ? 'Lo quiero' : 'Pregúntame precio';
+        art.appendChild(a);
+
+        root.appendChild(art);
+      });
+    }
+
+    document.querySelector('.filters').addEventListener('click', function (e) {
+      const btn = e.target.closest('button[data-filter]');
+      if (!btn) return;
+      document.querySelectorAll('.filters button').forEach(function (b) {
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      render(btn.getAttribute('data-filter'));
+    });
+
+    const hola = 'Hola Lily, vi tu página y me interesa algo de lo que tienes. ¿Me puedes ayudar?';
+    document.getElementById('wa-float').href = waUrl(hola);
+
+    render('all');
+  </script>
+</body>
+</html>
